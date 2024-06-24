@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #guessInput {
+            width: 50px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Угадай число от 1 до 100</h1>
+    <p>Введите число и нажмите "Угадать"</p>
+    <input type="number" id="guessInput">
+    <button onclick="checkGuess()">Угадать</button>
+    <p id="result"></p>
+
+    <script>
+        // Генерируем случайное число от 1 до 100
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log("Загаданное число:", randomNumber);
+
+        function checkGuess() {
+            // Получаем значение из поля ввода
+            let userGuess = parseInt(document.getElementById("guessInput").value);
+
+            // Проверяем, угадал ли пользователь число
+            if (userGuess === randomNumber) {
+                document.getElementById("result").textContent = `Ура! Вы угадали число ${randomNumber}.`;
+            } else if (userGuess < randomNumber) {
+                document.getElementById("result").textContent = `Нет, загаданное число больше ${userGuess}. Попробуйте еще раз.`;
+            } else {
+                document.getElementById("result").textContent = `Нет, загаданное число меньше ${userGuess}. Попробуйте еще раз.`;
+            }
+        }
+    </script>
+</body>
+</html>
